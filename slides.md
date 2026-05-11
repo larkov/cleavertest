@@ -1,7 +1,7 @@
 title: Snillen spekulerar
 author:
   name: Lari Kovanen
-output: public/basic.html
+output: docs/index.html
 controls: true
 theme: sudodoki/reveal-cleaver-theme
 --
