@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Utveckling &amp; teknik</title>
+  <title>Untitled</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -356,56 +356,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   font-weight: bold;
 }
 
-body {
-  background-color: #222;
-  color: #eee;
-  background-image: url('images/FOLIO_Sverige_logga-alfa.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 100% 0%;
-}
 
-h1, h3 {
-  font-family: Impact;
-  font-weight: bold;
-  font-style: italic;
-}
-
-pre {
-    background-color: #444;
-}
-
-pre code {
-  color: #ccc;
-  font-size: 140%;
-}
-
-.slide {
-  background-color: inherit;
-}
-
-.keyword {
-  color: #0086b3 !important;
-  font-weight: inherit !important;
-}
-
-.tag {
-  color: #900 !important;
-}
-
-code {
-  /* background-color: inherit; */
-  background-color: #444;
-}
-
-em {
-  border-bottom: 1px solid #666;
-}
-
-.slide-content {
-    width: 80%;
-    height: 80%;
-}
   </style>
     <script async src="http://localhost:35729/livereload.js"></script>
 </head>
@@ -414,92 +365,11 @@ em {
     <div class="progress-bar"></div>
   </div>
 
-  <div class="slide" id="slide-1">
-    <section class="slide-content"><!-- theme: sudodoki/reveal-cleaver-theme -->
-<h1 id="utveckling-teknik">Utveckling &amp; teknik</h1>
-<h2 id="snillen-spekulerar-om-l-ntagar-apier-och-annat-utvecklarrelaterat">Snillen spekulerar om Låntagar-APIer och annat utvecklarrelaterat</h2>
-<p>Lari Kovanen<br>Martin Ericsson</p>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h3 id="vilka-steg-beh-vs-">Vilka steg behövs.</h3>
-<ol>
-<li>Patrongroup</li>
-<li>Skapa en user</li>
-<li>Skapa Permissions</li>
-<li>Skapa RequestPreference</li>
-<li>ID-block?</li>
-<li>Sätt pinkod/lösenord</li>
-</ol>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h3 id="skapa-anv-ndaren">Skapa användaren</h3>
-<p>Posta till  <code>/users</code></p>
-<pre><code class="lang-json">{
-    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"externalSystemId"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"active"</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">"personal"</span>: {
-        <span class="hljs-attr">"firstName"</span>: <span class="hljs-string">"string"</span>,
-        <span class="hljs-attr">"lastName"</span>: <span class="hljs-string">"string"</span>,
-        <span class="hljs-attr">"email"</span>: <span class="hljs-string">"string"</span>,
-        <span class="hljs-attr">"preferedContactTypeId"</span>: <span class="hljs-string">"002"</span>
-    },
-    <span class="hljs-attr">"barcode"</span>:<span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"patronGroup"</span>:<span class="hljs-string">"GUID"</span>
-}
-</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h3 id="skapa-r-ttighegter-f-r-anv-ndaren">Skapa rättighegter för användaren</h3>
-<p>/perms/users  </p>
-<pre><code class="lang-json">{
-    <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"GUID"</span>,
-    <span class="hljs-attr">"permissions"</span>: []
-}
-</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h3 id="skapa-best-llarpreferens">Skapa beställarpreferens</h3>
-<p>/request-preference-storage/request-preference  </p>
-<pre><code class="lang-json">{
-    <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"GUID"</span>,
-    <span class="hljs-attr">"holdShelf"</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">"delivery"</span>: <span class="hljs-literal">false</span>
-}
-</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-6">
-    <section class="slide-content"><h3 id="skapa-id-block">Skapa ID-block</h3>
-<p>/manualblocks  </p>
-<pre><code class="lang-json">{
-    <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"GUID"</span>,
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Manual"</span>,
-    <span class="hljs-attr">"desc"</span>: <span class="hljs-string">"Nyskapat konto. ID-koll!!"</span>,
-    <span class="hljs-attr">"staffInformation"</span>: <span class="hljs-string">"Info som personal behöver."</span>,
-    <span class="hljs-attr">"patronMessage"</span>: <span class="hljs-string">"Eventuell info till användaren. Visa ID."</span>,
-    <span class="hljs-attr">"borrowing"</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">"renewals"</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">"requests"</span>: <span class="hljs-literal">false</span>
-}
-</code></pre>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h3 id="skapa-pin-l-senord">Skapa pin/lösenord</h3>
-<p>/patron-pin  </p>
-<pre><code class="lang-json">{
-    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"GUID"</span>,
-    <span class="hljs-attr">"pin"</span>: <span class="hljs-string">"pin/lösenord"</span>
-}
-</code></pre>
-</section>
-  </div>
 
+  <div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+  </div>
 
 
   <script type="text/javascript">
